@@ -1,16 +1,16 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Begin VB.Form frm 
    BorderStyle     =   1  '單線固定
-   Caption         =   "解數獨器"
+   Caption         =   "Sudoku Solver"
    ClientHeight    =   2670
    ClientLeft      =   7800
    ClientTop       =   4800
-   ClientWidth     =   3570
+   ClientWidth     =   3810
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    ScaleHeight     =   2670
-   ScaleWidth      =   3570
+   ScaleWidth      =   3810
    Begin VB.Timer SBT 
       Enabled         =   0   'False
       Interval        =   1
@@ -30,7 +30,7 @@ Begin VB.Form frm
       Top             =   1080
    End
    Begin VB.CommandButton Loadb 
-      Caption         =   "打開文件"
+      Caption         =   "Open"
       Height          =   615
       Left            =   2520
       TabIndex        =   11
@@ -153,37 +153,37 @@ Begin VB.Form frm
       Width           =   1215
    End
    Begin VB.Label Label3 
-      Caption         =   "若想看示範，在第一欄位輸入 ""test"" + 1~9"
+      Caption         =   "For an example, fill in ""test"" + 1~9 in the first row"
       Height          =   255
       Left            =   120
       TabIndex        =   15
       Top             =   2400
-      Width           =   3375
+      Width           =   3615
    End
    Begin VB.Label RC 
-      Caption         =   "重複計算 : 0次了"
+      Caption         =   "Repeated calculated : 0 times"
       Height          =   255
       Left            =   1200
       TabIndex        =   13
       Top             =   2160
       Visible         =   0   'False
-      Width           =   1575
+      Width           =   2535
    End
    Begin VB.Label lagl 
-      Caption         =   "狀態 : 預備狀態請寫入字串"
+      Caption         =   "Status : Ready (Fill in the numbers)"
       Height          =   255
       Left            =   1200
       TabIndex        =   12
       Top             =   120
-      Width           =   2175
+      Width           =   2535
    End
    Begin VB.Label Label1 
-      Caption         =   "(0代表空位)"
+      Caption         =   "(0 means blank)"
       Height          =   255
       Left            =   2520
       TabIndex        =   0
       Top             =   1800
-      Width           =   975
+      Width           =   1335
    End
 End
 Attribute VB_Name = "frm"
@@ -233,7 +233,7 @@ Started = 0
 For a1 = 0 To 8
 T(a1).Text = ""
 Next
-Loadb.Caption = "打開文件"
+Loadb.Caption = "Open"
 Repeat = 0
 End If
 End Sub
@@ -292,7 +292,7 @@ Next
 Next
 Testing = 0
 If Testing = 0 Then
-lagl.Caption = "狀態 : Lag (計算) 中...ㄏㄏ"
+lagl.Caption = "Status : Calculating..."
 TT.Enabled = True
 End If
 Else
@@ -367,7 +367,7 @@ Next
 If abcde = 1 Then Testing = Testing + 1
 End If
 Loop
-If Done = 1 Then lagl.Caption = "狀態 : 完成!!!ㄎㄎ帥吧"
+If Done = 1 Then lagl.Caption = "Status : Complete"
 If Testing = 2 Then SBT.Enabled = True
 If Testing = 1 And Done = 0 Then Testt.Enabled = True
 End Sub
@@ -380,7 +380,7 @@ End Sub
 
 Private Sub Testt_Timer()
 Repeat = Repeat + 1
-RC.Caption = "重複計算 : " & Repeat & " 次了"
+RC.Caption = "Repeated calculation : " & Repeat & " times"
 a1 = Fix(Rnd() * 9 + 1)
 a2 = Fix(Rnd() * 9 + 1)
 Do Until A(a1, a2) = 0
