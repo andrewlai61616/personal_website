@@ -1,0 +1,58 @@
+# Project: v8
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o src/alglibinternal.o src/alglibmisc.o src/ap.o src/integration.o src/interpolation.o src/linalg.o src/optimization.o src/solvers.o src/specialfunctions.o src/statistics.o
+LINKOBJ  = main.o src/alglibinternal.o src/alglibmisc.o src/ap.o src/integration.o src/interpolation.o src/linalg.o src/optimization.o src/solvers.o src/specialfunctions.o src/statistics.o
+LIBS     = -L"C:/Users/User/Desktop/DevCppPortable/MinGW64/lib" -L"C:/Users/User/Desktop/DevCppPortable/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Users/User/Desktop/DevCppPortable/MinGW64/include" -I"C:/Users/User/Desktop/DevCppPortable/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/User/Desktop/DevCppPortable/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Users/User/Desktop/DevCppPortable/MinGW64/include" -I"C:/Users/User/Desktop/DevCppPortable/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/User/Desktop/DevCppPortable/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/User/Desktop/DevCppPortable/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = v8.exe
+CXXFLAGS = $(CXXINCS) -ansi -std=c++11
+CFLAGS   = $(INCS) -ansi -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+src/alglibinternal.o: src/alglibinternal.cpp
+	$(CPP) -c src/alglibinternal.cpp -o src/alglibinternal.o $(CXXFLAGS)
+
+src/alglibmisc.o: src/alglibmisc.cpp
+	$(CPP) -c src/alglibmisc.cpp -o src/alglibmisc.o $(CXXFLAGS)
+
+src/ap.o: src/ap.cpp
+	$(CPP) -c src/ap.cpp -o src/ap.o $(CXXFLAGS)
+
+src/integration.o: src/integration.cpp
+	$(CPP) -c src/integration.cpp -o src/integration.o $(CXXFLAGS)
+
+src/interpolation.o: src/interpolation.cpp
+	$(CPP) -c src/interpolation.cpp -o src/interpolation.o $(CXXFLAGS)
+
+src/linalg.o: src/linalg.cpp
+	$(CPP) -c src/linalg.cpp -o src/linalg.o $(CXXFLAGS)
+
+src/optimization.o: src/optimization.cpp
+	$(CPP) -c src/optimization.cpp -o src/optimization.o $(CXXFLAGS)
+
+src/solvers.o: src/solvers.cpp
+	$(CPP) -c src/solvers.cpp -o src/solvers.o $(CXXFLAGS)
+
+src/specialfunctions.o: src/specialfunctions.cpp
+	$(CPP) -c src/specialfunctions.cpp -o src/specialfunctions.o $(CXXFLAGS)
+
+src/statistics.o: src/statistics.cpp
+	$(CPP) -c src/statistics.cpp -o src/statistics.o $(CXXFLAGS)
